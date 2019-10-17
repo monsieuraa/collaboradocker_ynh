@@ -17,9 +17,9 @@ domaines=$(echo $domaines | sed 's/^|//g');
 
 server_name=$(ynh_app_setting_get "$app" domain)
 
-options="-p 127.0.0.1:9980:9980 -e domain=$domaines -e server_name=$server_name --cap-add MKNOD"
+options="-p 127.0.0.1:$port:9980 -e domain=$domaines -e server_name=$server_name -e "username=admin" -e "password=72nMyw" --cap-add MKNOD"
 
-docker run -d --name=$app -e "username=admin" -e "password=72nMyw" --restart always $options $image 1>&2
+docker run -d --name=$app --restart always $options $image 1>&2
 RT=$?
 
 sleep 20

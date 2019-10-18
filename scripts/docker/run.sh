@@ -13,7 +13,7 @@ for d in $(yunohost domain list | grep \\. | sed 's/domains: //g' | sed 's/  - /
 do
 	domaines="$domaines|$d"
 done
-domaines=$(echo $domaines | sed 's/^|//g');
+domaines=$(echo 'cloud.monsieur-a.fr' | sed 's/^|//g');
 
 server_name=$(ynh_app_setting_get "$app" domain)
 
